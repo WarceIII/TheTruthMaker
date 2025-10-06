@@ -1,0 +1,381 @@
+fix me.
+<!-- DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Buvez-moi</title>
+  
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚪</text></svg>">
+
+  <style>
+
+body, .icon, a, p, html {
+  cursor: url('img/cursor.png') 16 16, auto;
+}
+
+
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #c0c0c0;
+    }
+
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #404040;
+      color: white;
+      padding: 5px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 14px;
+      z-index: 100;
+    }
+
+    .taskbar button {
+      margin-right: 10px;
+      background-color: #808080;
+      border: 2px outset #fff;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .icon {
+      display: block;
+      width: 110px;
+      height: 110px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      cursor: pointer;
+      z-index: 50;
+    }
+
+    .icon span {
+      font-size: 13px;
+      font-weight: bold;
+      font-family: system-ui;
+      display: block;
+      margin-top: 5px;
+    }
+.about-popup span {
+    font-size: 8px;
+}
+    .icon img {
+      max-width: 100%;
+    }
+.icon :hover {    text-decoration: underline;
+}.nepaslire::selection {
+  background:    #D1F602; 
+  color:     #000000; 
+}
+    .popup, .about-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #e0e0e0;
+      border: 2px solid #000;
+      width: 400px;
+      z-index: 10;
+      box-shadow: 5px 5px 0 #000;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+
+    }
+.popup {      z-index:60 ;}
+.about-popup {      z-index:70 !important;}
+    .popup.visible {
+      display: flex;
+      opacity: 1;
+    }
+
+    .popup.minimized {
+      transform: translate(10px, calc(100vh - 60px)) scale(0.1);
+      opacity: 0;
+    }
+
+
+
+    .info-bar {
+      background-color: #dddddd;
+      color: black;
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #7a7a7a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+   .info-bar a {
+    color: #4257d1;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+    width: 300px;
+}
+
+    .img {
+      text-align: center;
+      background: #000000;
+    }
+
+    .popup img.logo {
+      width: 100%;
+      margin: auto;
+    }
+
+    .generate-btn, .about-btn, .close-btn, .minimize-btn {
+      background-color: #d0d0d0;
+      border: 2px outset #fff;
+      padding: 5px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px auto;
+
+    }
+    .generated-link {
+      background-color: #fff;
+      border: 1px solid #000;
+      padding: 5px;
+      margin-top: 5px;
+      text-align: center;
+          font-size: 11px;
+    color: #fff;
+    }
+
+    .credits {
+      font-size: 12px;
+      margin-top: 10px;
+      background-color: #f0f0f0;
+      padding: 5px;
+      border-top: 1px solid #000;
+      text-align: center;
+    }
+
+    .about-popup {
+      width: 220px;
+      height: auto;
+      background-color: #e0e0e0;
+      border: 2px solid #000;
+      box-shadow: 5px 5px 0 #000;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      z-index: 20;
+    }
+img.bunny {
+   /* color:#invisible. */
+}
+    .about-popup.visible {
+      display: flex;
+    }
+.nepaslire {
+    color: #c0c0c0;
+    font-size: 78px;
+    font-weight: bold;
+    display: block;
+    font-family: fantasy;
+    font-style: italic;
+    margin: 30px auto;
+    width: 600px;
+}
+    .about-popup .close-btn {
+      align-self: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .about-popup img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .about {
+      display: inline-block;
+      width: 300px;
+      text-align: center;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+
+<body>
+  <span class="lirenepas">Je suis le cerbère.<br /> Êtes-vous la clé à cliquer ? </span>
+<span class="nepaslire">La réponse se cache dans la fourrure du lapin.</span>
+
+
+  <div class="icon" onclick="launchApp()">
+    <img src="img/doorexe.png" alt="door icon" />
+    <span>door.app</span>
+  </div>
+
+  <div class="taskbar">
+    <button id="restoreBtn" class="hidden" onclick="restorePopup()">🗝️ Door.app</button>
+  </div>
+
+
+  <audio id="retroAudio" src="media/Small_K3y [Drink me Edit] V.001.mp3" autoplay muted></audio>
+
+
+  <div class="popup" id="mainPopup">
+    <div class="info-bar">
+      <a href="#porte">Une petite porte à peu près quinze pouces de haut…</a>
+      <button class="minimize-btn" onclick="minimizePopup()">_</button>
+    </div>
+    <div class="img">
+      <img class="logo" src="img/door.jpg" alt="une porte?" />
+    </div>
+    <button class="generate-btn" onclick="generateLink()">Generate</button>
+    <div id="generatedContent"></div>
+    <div class="credits">
+      <p class="about">TERREUR 404</p>
+      <button class="about-btn" onclick="openAbout()">About</button>
+    </div>
+  </div>
+
+
+  <div class="about-popup" id="aboutPopup">
+    <button class="close-btn" onclick="closeAbout()">✖ Close</button>
+    <img src="img/doorz.jpg" alt="about image" />
+    <span>https://www.youtube.com/shorts/apKrN3jr8NA</span>
+  </div>
+
+<div id="loadingScreen" class="popup" style="display: none; flex-direction: column; align-items: center;">
+  <div style="margin-bottom: 10px;">
+    <img src="img/loading-wheel.gif" alt="loading wheel" style="width: 60px;" />
+  </div>
+  <div style="width: 80%; background: #ccc; border: 1px solid #000; height: 20px; position: relative;">
+    <div id="progressBar" style="background: #4caf50; height: 100%; width: 0%;"></div>
+  </div>
+</div>
+
+
+  <script>
+const popup = document.getElementById('mainPopup');
+const audio = document.getElementById('retroAudio');
+const restoreBtn = document.getElementById('restoreBtn');
+const icon = document.querySelector('.icon');
+const aboutPopup = document.getElementById('aboutPopup');
+const loadingScreen = document.getElementById('loadingScreen');
+const progressBar = document.getElementById('progressBar');
+
+let clickCount = 0;
+let moveCount = 0;
+let maxMoves = 4;
+let isMoving = false;
+
+function mischievousMoveSequence(callback) {
+  moveCount = 0;
+  isMoving = true;
+
+  function moveStep() {
+    if (moveCount < maxMoves) {
+      const randomX = Math.floor(Math.random() * 700);
+      const randomY = Math.floor(Math.random() * 700);
+      const scale = 1 - (clickCount * 0.05);
+
+      icon.style.left = `${randomX}px`;
+      icon.style.top = `${randomY}px`;
+      icon.style.transform = `translate(0, 0) scale(${scale})`;
+
+      moveCount++;
+      setTimeout(moveStep, 300);
+    } else {
+      isMoving = false;
+      callback();
+    }
+  }
+
+  moveStep();
+}
+
+function showLoadingThenLaunch() {
+  icon.classList.add('hidden');
+  loadingScreen.style.display = 'flex';
+  progressBar.style.width = '0%';
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += 5;
+    progressBar.style.width = `${progress}%`;
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      loadingScreen.style.display = 'none';
+      popup.classList.add('visible');
+      audio.muted = false;
+      audio.play().catch(() => {});
+    }
+  }, 100); // 2 secondes au total
+}
+
+function launchApp() {
+  if (isMoving) return;
+
+  clickCount++;
+
+  if (clickCount < 4) {
+    mischievousMoveSequence(() => {});
+  } else {
+    const scale = 1 - (clickCount * 0.05);
+    icon.style.transform = `translate(0, 0) scale(${scale})`;
+    showLoadingThenLaunch();
+  }
+}
+
+function restorePopup() {
+  popup.classList.add('visible');
+  popup.classList.remove('minimized');
+  restoreBtn.classList.add('hidden');
+  audio.muted = false;
+  audio.play().catch(() => {});
+}
+
+function minimizePopup() {
+  popup.classList.add('minimized');
+  icon.classList.remove('hidden');
+  setTimeout(() => {
+    popup.classList.remove('visible');
+    popup.classList.remove('minimized');
+    restoreBtn.classList.remove('hidden');
+  }, 500);
+}
+
+function generateLink() {
+  const container = document.getElementById('generatedContent');
+  container.innerHTML = `<div class="generated-link">INCROYABLE. Une fiche sur chacun</div>`;
+}
+
+function openAbout() {
+  aboutPopup.classList.add('visible');
+}
+
+function closeAbout() {
+  aboutPopup.classList.remove('visible');
+}
+
+
+  </script>
+
+
+
+</body>
+</html>
