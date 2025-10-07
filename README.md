@@ -15,7 +15,7 @@ Dorez tout cela à la poêle dans un peu de beurre.
 Ajouter de l'eau si nécessaire pour noyer le poisson.
 
 Étape 4 : Éplucher et couper les carottes en rondelles et émincer les oignons. 
-On m'a dit de vous dire : « Il faut que vous fassiez blanchir des champignons”. 
+On m'a dit de vous dire : "Il faut que vous fassiez blanchir des champignons". 
 Ça vous dit quelque chose ? Quoi qu’il en soit, vous incorporez au régiment toute cette légumerie à la viande.
 
 Étape 5 : Laisser mijoter à feu doux environ 1h30 à 2h00 en remuant de temps à autre.
