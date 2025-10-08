@@ -1,6 +1,6 @@
-fix me.
-<!-- DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Buvez-moi</title>
@@ -181,7 +181,8 @@ img.bunny {
       display: flex;
     }
 .nepaslire {
-    color: #c0c0c0;
+    /* Every Rabbit can now read */
+    color: #000000;
     font-size: 78px;
     font-weight: bold;
     display: block;
@@ -282,30 +283,30 @@ let moveCount = 0;
 let maxMoves = 4;
 let isMoving = false;
 
-function mischievousMoveSequence(callback) {
-  moveCount = 0;
-  isMoving = true;
+// function mischievousMoveSequence(callback) {
+//   moveCount = 0;
+//   isMoving = true;
 
-  function moveStep() {
-    if (moveCount < maxMoves) {
-      const randomX = Math.floor(Math.random() * 700);
-      const randomY = Math.floor(Math.random() * 700);
-      const scale = 1 - (clickCount * 0.05);
+//   function moveStep() {
+//     if (moveCount < maxMoves) {
+//       const randomX = Math.floor(Math.random() * 700);
+//       const randomY = Math.floor(Math.random() * 700);
+//       const scale = 1 - (clickCount * 0.05);
 
-      icon.style.left = `${randomX}px`;
-      icon.style.top = `${randomY}px`;
-      icon.style.transform = `translate(0, 0) scale(${scale})`;
+//       icon.style.left = `${randomX}px`;
+//       icon.style.top = `${randomY}px`;
+//       icon.style.transform = `translate(0, 0) scale(${scale})`;
 
-      moveCount++;
-      setTimeout(moveStep, 300);
-    } else {
-      isMoving = false;
-      callback();
-    }
-  }
+//       moveCount++;
+//       setTimeout(moveStep, 300);
+//     } else {
+//       isMoving = false;
+//       callback();
+//     }
+//   }
 
-  moveStep();
-}
+//   moveStep();
+// }
 
 function showLoadingThenLaunch() {
   icon.classList.add('hidden');
@@ -330,15 +331,16 @@ function showLoadingThenLaunch() {
 function launchApp() {
   if (isMoving) return;
 
-  clickCount++;
+  // clickCount++;
 
-  if (clickCount < 4) {
-    mischievousMoveSequence(() => {});
-  } else {
+  // Allow access to all rabbits in tyhe kingdom
+  // if (clickCount < 4) {
+  //   mischievousMoveSequence(() => {});
+  // } else {
     const scale = 1 - (clickCount * 0.05);
     icon.style.transform = `translate(0, 0) scale(${scale})`;
     showLoadingThenLaunch();
-  }
+  // }
 }
 
 function restorePopup() {
